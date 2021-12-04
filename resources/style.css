@@ -1,0 +1,51 @@
+@media (max-width: 768px) {
+  .border-md {
+    border-radius: 0 !important;
+    border-right: 0 !important;
+    /*Overwrites the border when the viewport is to small*/
+    border-left: 0 !important;
+  }
+}
+html, body {
+  height: 100%;
+}
+
+#main {
+  overflow: auto;
+  padding-bottom: 150px;
+  /* this needs to be bigger than footer height*/
+}
+
+h1.width-confirmed {
+  max-width: 5.8em !important;
+  margin: auto !important;
+  background-color: #258d5d;
+  border-radius: 10px 10px 0 0;
+}
+h1.width-wl {
+  max-width: 6.4em !important;
+  margin: auto !important;
+  border-radius: 10px 10px 0 0;
+}
+
+.card {
+  background-color: #ffffff1f !important;
+  color: white !important;
+}
+.card .card-body .card-datetime {
+  font-size: 1.4rem !important;
+}
+
+.sidebar {
+  background-color: #ffffff1f !important;
+  margin-bottom: auto !important;
+}
+
+footer a {
+  color: #747e8f;
+}
+footer a:hover {
+  color: #53575e;
+}
+
+/*# sourceMappingURL=style.css.map */
