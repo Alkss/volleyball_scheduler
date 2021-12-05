@@ -21,7 +21,7 @@ session_start();
     <link rel="stylesheet" href="/resources/style.css" type="text/css"/> <!--Custom CSS-->
     <script src="/resources/jquery.min.js" type="text/javascript"></script> <!--Bootstrap Jquery-->
 
-    <script src="../../js/navbar.js" type="text/javascript"></script> <!--Navbar jquery-->
+    <script src="/js/navbar.js" type="text/javascript"></script> <!--Navbar jquery-->
 
     <title>Volley Ball Scheduler</title>
 </head>
@@ -33,7 +33,8 @@ session_start();
                  alt="" width="30" height="24" class="d-inline-block align-text-top">
             VolleyBall Scheduler
         </a>
-        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,10 +43,19 @@ session_start();
             ?>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a href="/view/manage/index.php" class="text-white nav-link"><i
-                                    class="fas fa-space-shuttle"></i> My
-                            Space</a>
+                    <li class="nav-item dropdown">
+                        <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-space-shuttle"></i> My Space
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/view/manage/index.php">
+                                    <i class="fas fa-home"></i> Home
+                                </a></li>
+                            <li><a class="dropdown-item" href="/view/manage/profile/edit.php">
+                                    <i class="fas fa-user-edit"></i> Edit Profile
+                                </a></li>
+                        </ul>
                     </li>
                     <?php
                     if (isset($_SESSION['user_isAdmin']) && $_SESSION['user_isAdmin'] == 1) {
@@ -64,7 +74,8 @@ session_start();
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-light" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    <button class="btn btn-outline-light" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
                 </form>
             </div>
             <?php

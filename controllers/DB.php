@@ -1,16 +1,16 @@
 <?php
+
 namespace controllers;
 
 use mysqli;
-use mysqli_result;
 
 class DB
 {
-    private $dbServerName = "213.190.6.43";
-    private $dbUsername = "u973673548_volley";
-    private $dbPassword = "4ga5IIMC9JgM9ljspkI\$d";
-    private $dbName = "u973673548_volley";
-    private $conexion;
+    private string $dbServerName = "213.190.6.43";
+    private string $dbUsername = "u973673548_volley";
+    private string $dbPassword = "4ga5IIMC9JgM9ljspkI\$d";
+    private string $dbName = "u973673548_volley";
+    private mysqli $conexion;
 
     public function __construct()
     {
@@ -34,4 +34,41 @@ class DB
         }
         return null;
     }
+
+    public function validateIfEmailIsAlreadyBeingUsed(string $user_email): bool
+    {
+        $userSelection = $this->conexion->query("SELECT * FROM `user` WHERE email='$user_email'");
+        if ($userSelection->num_rows > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function updateUser(int $user_id, string $user_name, string $user_email, string $user_password, $isAdmin): bool
+    {
+        if (empty($user_password)) {
+            $update = $this->conexion->query("UPDATE `user` SET 
+                  `name`='$user_name',
+                  `email`='$user_email',
+                  `isAdmin` = {$isAdmin}
+                WHERE `id`='$user_id'");
+
+        } else {
+            $md5Password = md5($user_password);
+            $update = $this->conexion->query
+            ("UPDATE `user` SET
+                  `name`='$user_name',
+                  `email`='$user_email',
+                  `isAdmin` = {$isAdmin},
+                  `password`='$md5Password' 
+                WHERE `id`='$user_id'");
+        }
+
+        if ($update) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

@@ -18,6 +18,5 @@ $("#submitBtn").on('click', function () {
         }else{
             window.location.replace("../view/manage/index.php");
         }
-        console.log(JSON.parse(returnedData))
     })
 })

@@ -4,10 +4,10 @@ $( document ).ready(function() {
         console.log('hit');
         $.ajax({
             type: "POST",
-            url: "../../jquery/logout-jquery.php",
+            url: "/jquery/logout-jquery.php",
             data: user_id
         }).done(function () {
-            window.location.replace("../index.php");
+            window.location.replace("/index.php");
         })
     })
 });

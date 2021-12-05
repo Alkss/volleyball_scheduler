@@ -17,7 +17,7 @@ Validator::validateIfLoggedAndRedirect();
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" id="password" name="password" class="form-control">
             </div>
-            <button type="submit" id="submitBtn" class="btn btn-outline-light">Submit</button>
+            <button type="submit" id="submitBtn" class="btn btn-outline-light">Login</button>
         </div>
     </div>
     <script src="js/login.js"></script>

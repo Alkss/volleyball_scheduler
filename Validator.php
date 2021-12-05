@@ -24,6 +24,8 @@ class Validator
     public static function validateIfLoggedAndAskForLogin()
     {
         if (!isset($_SESSION['user_id'])){
+            session_start();
+            session_destroy();
             header("Location: /login.php");
             die();
         }
