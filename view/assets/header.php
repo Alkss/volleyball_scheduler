@@ -51,17 +51,36 @@ session_start();
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="/view/manage/index.php">
                                     <i class="fas fa-home"></i> Home
-                                </a></li>
+                                </a>
+                            </li>
+
                             <li><a class="dropdown-item" href="/view/manage/profile/edit.php">
                                     <i class="fas fa-user-edit"></i> Edit Profile
-                                </a></li>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <?php
                     if (isset($_SESSION['user_isAdmin']) && $_SESSION['user_isAdmin'] == 1) {
                         ?>
-                        <li class="nav-item">
-                            <a href="#" class="text-white nav-link"><i class="fas fa-users"></i> Users</a>
+                        <li class="nav-item dropdown">
+                            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-users"></i> Users
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <a class="dropdown-item" href="/view/manage/user/index.php">
+                                        <i class="fas fa-users-cog"></i> Manage Users
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="/view/manage/user/create.php">
+                                        <i class="fas fa-user-plus"></i> Create User
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <?php
                     }

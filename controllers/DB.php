@@ -71,4 +71,12 @@ class DB
         }
     }
 
+    public function insertUser(string $user_name, string $user_email, string $user_password, $isAdmin): bool
+    {
+        $newUser = $this->conexion->query("insert into user (name, email, password, isAdmin)
+values ('$user_name', '$user_email', '$user_password', '$isAdmin');");
+
+        return $newUser;
+    }
+
 }
