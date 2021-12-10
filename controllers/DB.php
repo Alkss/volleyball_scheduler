@@ -37,9 +37,9 @@ class DB
 
     public function validateIfEmailIsAlreadyBeingUsed(string $user_email): bool
     {
-        $userSelection = $this->conexion->query("SELECT * FROM `user` WHERE email='$user_email'");
+        $userSelection = $this->conexion->query("SELECT id FROM `user` WHERE email='$user_email'");
         if ($userSelection->num_rows > 0) {
-            return true;
+            return $userSelection->fetch_assoc()['id'];
         }
         return false;
     }
@@ -79,4 +79,21 @@ values ('$user_name', '$user_email', '$user_password', '$isAdmin');");
         return $newUser;
     }
 
+    public function getUserById($id): bool|array|null
+    {
+        $user = $this->conexion->query("select * from user where id = {$id}");
+        if ($user->num_rows > 0) {
+            return $user->fetch_assoc();
+        }
+        return null;
+    }
+
+    public function getAllUsers()
+    {
+        $allUsers = $this->conexion->query("select * from user");
+        if ($allUsers->num_rows > 0) {
+            return $allUsers->fetch_all(MYSQLI_ASSOC);
+        }
+        return null;
+    }
 }

@@ -31,6 +31,16 @@ class Validator
         }
     }
 
+    public static function validateIfLoggedAdminAndAskForLogin()
+    {
+        if (!isset($_SESSION['user_id']) && (!isset($_SESSION['user_isAdmin']) && $_SESSION['user_isAdmin'] != 1)){
+            session_start();
+            session_destroy();
+            header("Location: /login.php");
+            die();
+        }
+    }
+
     public static function validateLogin(string $userEmail, string $userPassword)
     {
         $db = new DB();

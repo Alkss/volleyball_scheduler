@@ -7,7 +7,7 @@ $("#edit").on('click', function () {
     let user_password = $("#user_password").val()
     let user_password_confirm = $("#user_password_confirm").val()
     let isAdmin = $("#isAdmin").is(":checked")
-
+    let self = $("#self_edit").val();
 
     $.ajax({
         type: "POST",
@@ -18,7 +18,8 @@ $("#edit").on('click', function () {
             user_email: user_email,
             user_password: user_password,
             user_password_confirm: user_password_confirm,
-            isAdmin: isAdmin
+            isAdmin: isAdmin,
+            self: self
         }
     }).done(function (returnedData) {
         console.dir(returnedData)

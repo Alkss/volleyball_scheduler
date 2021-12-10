@@ -54,7 +54,7 @@ session_start();
                                 </a>
                             </li>
 
-                            <li><a class="dropdown-item" href="/view/manage/profile/edit.php">
+                            <li><a class="dropdown-item" href="/view/manage/user/edit_self.php">
                                     <i class="fas fa-user-edit"></i> Edit Profile
                                 </a>
                             </li>
