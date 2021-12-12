@@ -39,7 +39,9 @@ h1 {
     }
   }
 }
-
+.form-control:disabled{
+  opacity: .3;
+}
 .sidebar{
   background-color: #ffffff1f !important;
   margin-bottom: auto !important;

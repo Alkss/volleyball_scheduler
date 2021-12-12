@@ -15,7 +15,7 @@ class Validator
 
     public static function validateIfLoggedAndRedirect()
     {
-        if (isset($_SESSION['user_id'])){
+        if (isset($_SESSION['user_id'])) {
             header("Location: /view/manage/index.php");
             die();
         }
@@ -23,7 +23,7 @@ class Validator
 
     public static function validateIfLoggedAndAskForLogin()
     {
-        if (!isset($_SESSION['user_id'])){
+        if (!isset($_SESSION['user_id'])) {
             session_start();
             session_destroy();
             header("Location: /login.php");
@@ -33,7 +33,7 @@ class Validator
 
     public static function validateIfLoggedAdminAndAskForLogin()
     {
-        if (!isset($_SESSION['user_id']) && (!isset($_SESSION['user_isAdmin']) && $_SESSION['user_isAdmin'] != 1)){
+        if (!isset($_SESSION['user_id']) && (!isset($_SESSION['user_isAdmin']) && $_SESSION['user_isAdmin'] != 1)) {
             session_start();
             session_destroy();
             header("Location: /login.php");
@@ -52,6 +52,18 @@ class Validator
             return $validation;
         } else {
             return false;
+        }
+    }
+
+    public static function checkIfCourtIsOpen($courtId)
+    {
+        $db = new DB();
+        $validation = $db->select("
+            SELECT isOpen FROM court where id='{$courtId}'
+        ")['isOpen'];
+        if ($validation==0){
+            header("Location: /index.php");
+            die();
         }
     }
 }

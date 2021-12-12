@@ -36,6 +36,10 @@ h1.width-wl {
   font-size: 1.4rem !important;
 }
 
+.form-control:disabled {
+  opacity: 0.3;
+}
+
 .sidebar {
   background-color: #ffffff1f !important;
   margin-bottom: auto !important;

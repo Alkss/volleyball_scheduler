@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="b988622b-991b-489f-a186-4e249e14b2f0" name="aoliveira.me // hostinger" url="http://aoliveira.online">
-        <fileTransfer rootFolder="/domains/aoliveira.online/public_html" host="aoliveira.online" port="21">
+      <webServer id="b988622b-991b-489f-a186-4e249e14b2f0" name="aoliveira.me // hostinger" url="http://31.170.164.95">
+        <fileTransfer rootFolder="/domains/aoliveira.online/public_html" host="31.170.164.95" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

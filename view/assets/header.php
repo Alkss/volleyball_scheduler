@@ -23,6 +23,7 @@ session_start();
 
     <script src="/js/navbar.js" type="text/javascript"></script> <!--Navbar jquery-->
 
+
     <title>Volley Ball Scheduler</title>
 </head>
 <body class="bg-dark text-white">
@@ -33,18 +34,20 @@ session_start();
                  alt="" width="30" height="24" class="d-inline-block align-text-top">
             VolleyBall Scheduler
         </a>
-        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <?php
         if (isset($_SESSION['user_id'])) {
             ?>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                           role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-space-shuttle"></i> My Space
                         </a>
@@ -64,7 +67,8 @@ session_start();
                     if (isset($_SESSION['user_isAdmin']) && $_SESSION['user_isAdmin'] == 1) {
                         ?>
                         <li class="nav-item dropdown">
-                            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                               role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-users"></i> Users
                             </a>
@@ -82,15 +86,51 @@ session_start();
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                               role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="far fa-calendar-alt"></i> Days
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <a class="dropdown-item" href="/view/manage/day/index.php">
+                                        <i class="fas fa-calendar-week"></i> Manage Days
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="/view/manage/day/create.php">
+                                        <i class="fas fa-calendar-plus"></i> Create Days
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <?php
                     }
                     ?>
-                    <li class="nav-item">
-                        <a href="#" class="text-white nav-link"><i class="far fa-list-alt"></i> Courts</a>
+                    <li class="nav-item dropdown">
+                        <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                           role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="far fa-list-alt"></i> Courts
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="/view/manage/courts/index.php">
+                                    <i class="fas fa-tasks"></i> Manage Courts
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/view/manage/courts/create.php">
+                                    <i class="fas fa-folder-plus"></i> Create Court
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="text-white nav-link"><i class="far fa-calendar-alt"></i> Days</a>
-                    </li>
+
                 </ul>
                 <form class="d-flex">
                     <button class="btn btn-outline-light" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout
