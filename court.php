@@ -52,10 +52,15 @@ foreach ($playerList as $singlePlayer) {
             <div class="row justify-content-sm-center justify-content-md-end">
                 <div class="col-sm-12 border-2 border-success border-end border-top rounded-end me-md-1 border-md">
                     <?php
-                    foreach ($confirmedList as $player) {
+                    foreach ($confirmedList as $key=>$player) {
                         ?>
-                        <div class="col-12 text-center text-md-end">
-                            <?= $player ?> <i class="fas fa-volleyball-ball"></i>
+                        <div class="col-12 text-center text-md-end fs-5">
+                            <?= $player ?>
+                            <span class="badge rounded-pill bg-black floater-left">
+                                <?=$key +1?>
+                                <span class="visually-hidden">player position</span>
+                            </span>
+                            <i class="fas fa-volleyball-ball ms-2 floater-right"></i>
                         </div>
                         <?php
                     }

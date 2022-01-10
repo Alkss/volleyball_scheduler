@@ -52,4 +52,16 @@ footer a:hover {
   color: #53575e;
 }
 
+@media (max-width: 768px) {
+  .floater-left {
+    float: left !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .floater-right {
+    float: right !important;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

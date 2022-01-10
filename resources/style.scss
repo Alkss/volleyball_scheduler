@@ -56,3 +56,15 @@ footer {
     color: #53575e;
   }
 }
+
+.floater-left{
+  @media (max-width: 768px) {
+    float: left !important;
+  }
+}
+
+.floater-right{
+  @media (max-width: 768px) {
+    float: right !important;
+  }
+}

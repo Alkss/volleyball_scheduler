@@ -6,7 +6,7 @@ use mysqli;
 
 class DB
 {
-    private string $dbServerName = "213.190.6.43";
+    private string $dbServerName = "31.170.164.95";
     private string $dbUsername = "u973673548_volley";
     private string $dbPassword = "4ga5IIMC9JgM9ljspkI\$d";
     private string $dbName = "u973673548_volley";
@@ -73,8 +73,9 @@ class DB
 
     public function insertUser(string $user_name, string $user_email, string $user_password, $isAdmin): bool
     {
+        $md5Password = md5($user_password);
         $newUser = $this->connection->query("insert into user (name, email, password, isAdmin)
-values ('$user_name', '$user_email', '$user_password', '$isAdmin');");
+values ('$user_name', '$user_email', '$md5Password', '$isAdmin');");
 
         return $newUser;
     }
@@ -108,10 +109,15 @@ values ('$user_name', '$user_email', '$user_password', '$isAdmin');");
 
     public function insertDay(string $dayWeek, string $owner): \mysqli_result|bool
     {
-        $insertedDay = $this->connection->query("
+        $this->connection->query("
         insert into day(`owner`, `matchDay`) values('$owner', '$dayWeek')
         ");
-        return $insertedDay;
+
+        $insertedId = $this->getLastInsertedId();
+        return $this->connection->query("
+            INSERT INTO day_user(user, day) VALUES('{$owner}', '{$insertedId}') 
+        ");
+
     }
 
     public function getAllDays()
@@ -249,7 +255,7 @@ values ('$user_name', '$user_email', '$user_password', '$isAdmin');");
 
     public function insertPlayerIntoCourt($courtId, $playerId)
     {
-        $this->connection->query("
+        return $this->connection->query("
             INSERT INTO players_court(court, player) VALUES ('{$courtId}', '{$playerId}')
         ");
     }

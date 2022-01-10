@@ -15,6 +15,14 @@ session_start();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/resources/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/resources/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <script src="/resources/bootstrap.min.js" type="text/javascript"></script> <!--Bootstrap js-->
     <link rel="stylesheet" href="/resources/bootstrap.min.css" type="text/css"/> <!--Bootstrap CSS-->
     <link rel="stylesheet" href="/resources/fontawesome/css/all.min.css" type="text/css"/> <!--Font Awesome-->
