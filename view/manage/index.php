@@ -42,5 +42,38 @@ $courts = $db->getActiveCourts();
         }
         ?>
     </div>
+
+<?php
+if (isset($_SESSION['user_isAdmin']) && $_SESSION['user_isAdmin'] == 1) {
+    $historyCourts = $db->getHistoryCourts();
+    ?>
+    <div class="justify-content-center text-center">
+        <h1>HISTORY</h1>
+    </div>
+    <div class="row justify-content-center">
+        <?php
+        foreach ($historyCourts as $singleHistory) {
+            ?>
+            <div class="card m-3 col-sm-12" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="card-title"><?= $singleHistory['day_name'] ?> (<?= $singleHistory['id'] ?>)</h5>
+                        </div>
+                        <div class="col-4">
+                            <a href="/view/manage/courts/edit.php?id=<?= $singleHistory['id'] ?>"
+                               class="btn btn-outline-light">View</a>
+                        </div>
+                        <h6 class="card-subtitle mb-2 text-muted"><?= date_format($date, "d-m-Y H:i") ?></h6>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+    <?php
+}
+?>
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/view/assets/footer.php';

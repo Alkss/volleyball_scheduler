@@ -253,6 +253,21 @@ values ('$user_name', '$user_email', '$md5Password', '$isAdmin');");
 
     }
 
+    public function getHistoryCourts()
+    {
+        $now = date("Y-m-d H:i:s");
+        return $this->connection->query("
+            SELECT c.id, c.max_Players, c.datetime,
+                   d.matchDay,
+                   ad.name as 'day_name'
+
+                
+            FROM court c JOIN day d ON c.day = d.id JOIN available_days ad ON d.matchDay = ad.id
+            WHERE c.isOpen=1 AND c.datetime < '{$now}'
+            ORDER BY c.datetime DESC
+        ")->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function insertPlayerIntoCourt($courtId, $playerId)
     {
         return $this->connection->query("
