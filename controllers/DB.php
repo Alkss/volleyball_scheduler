@@ -315,4 +315,17 @@ values ('$user_name', '$user_email', '$md5Password', '$isAdmin');");
         );
     }
 
+    //region Cron
+    public function getCourtsToOpen()
+    {
+        $query = "SELECT id, scheduleDatetime FROM court WHERE isScheduled = 1 AND isOpen = 0 AND scheduleDatetime <= NOW()";
+        return $this->connection->query($query)->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function openCourtById($courtId)
+    {
+        $query = "UPDATE court SET isOpen=1 WHERE id={$courtId}";
+        return $this->connection->query($query);
+    }
+    //endregion
 }
