@@ -41,7 +41,7 @@ class Validator
         }
     }
 
-    public static function validateLogin(string $userEmail, string $userPassword)
+    public static function validateLogin(string $userEmail, string $userPassword): bool|array
     {
         $db = new DB();
         $md5Password = md5($userPassword);
