@@ -1,25 +1,34 @@
 <?php
-include "view/assets/header.php";
-require_once 'Validator.php';
-Validator::validateIfLoggedAndRedirect();
+
+use controllers\DB;
+
+require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/DB.php";
+include 'view/assets/header.php';
+
+$db = new DB();
+$courts = $db->getActiveCourts();
 ?>
-    <div class="alert alert-danger text-center" role="alert" style="display: none" id="error-message">
-        Email or Password incorrect
+    <div class="justify-content-center text-center">
+        <h1>AVAILABLE DAYS</h1>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" id="email" name="email" class="form-control" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <div class="row text-dark justify-content-around">
+
+        <?php
+        foreach ($courts as $singleCourt) {
+            $date = date_create($singleCourt['datetime'])
+            ?>
+            <div class="card mb-3 p-0" style="width: 18rem;">
+                <a href="/court.php?id=<?= $singleCourt['id'] ?>">
+                    <img src="/assets/images/<?= $singleCourt['code'] ?>.jpg" class="card-img-top" alt="ACM Picture">
+                </a>
+                <div class="card-body">
+                    <p class="card-datetime mb-0"><?= date_format($date, "d/m/Y - H:i") ?></p>
+                    <p class="card-text">(<?= $singleCourt['max_Players'] ?> people)</p>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control">
-            </div>
-            <button type="submit" id="submitBtn" class="btn btn-outline-light">Login</button>
-        </div>
+            <?php
+        }
+        ?>
     </div>
-    <script src="js/login.js"></script>
 <?php
-include "view/assets/footer.php";
+include 'view/assets/footer.php';
